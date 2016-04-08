@@ -1,0 +1,19 @@
+{
+  "name": "project1887",
+  "description": "project 1",
+  "main": "server.js",
+  "license": "ISC",
+  "homepage": "https://github.com/Ameer-Brown/Project1887",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jQuery": "^2.2.3",
+    "handlebars": "^4.0.5",
+    "bootstrap": "^3.3.6"
+  }
+}
