@@ -20,6 +20,7 @@
 
  <!-- APPLICATION SCRIPTS -->
  <script src="scripts/col.js"></script>
+ <script src="scripts/home.js"></script>
 </head>
 
 <body>
@@ -27,56 +28,162 @@
      <div class="container">
   <header>
   	<img src="" alt="#Project1887 Photo" style="width:250px;height:250px">
-  <h1>#PRoject1887</h1>
+  <h1>#Project1887</h1>
   	<ul>
-  <li><a href = "wwww.famu.edu">FAMU Homepage<a/></li>
+  <li><a href = "http://www.famu.edu/">FAMU Homepage<a/></li>
   </ul>
   </header>
     </div>
  </div>
-  <div class="container">
-  <h1 class="text-center">How has your time at FAMU impacted your trajectory in life?</h1>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+ <section id='alumni-form' class="container">
+   <h1 </h1>
+      <div class="row">
+      <div class="col-md-10 col-md-offset-1">
 
-      <form class="form-inline" id="newAlumniForm">
+        <form class="form-horizontal">
+          <fieldset>
 
-        <div class="form-group">
-          <label for="title">Name</label>
-          <input type="text" class="form-control" name="name" placeholder="Full Name">
-        </div>
-        <br>
-        <div class="form-group">
-          <label for="title">Year</label>
-          <input type="text" class="form-control" name="year" placeholder="Year Graduated">
-        </div>
-        <br>
-        <div class="form-group">
-          <label for="title">Major</label>
-          <input type="text" class="form-control" name="major" placeholder="Major">
-        </div>
-        <br>
-        <div class="form-group">
-          <label for="title">Occupation</label>
-          <input type="text" class="form-control" name="job" placeholder="Occupation">
-        </div>
-        <br>
-        <div class="form-group">
-          <label for="title">Email</label>
-          <input type="text" class="form-control" name="email" placeholder="Email">
-        </div>
-        <br>
-        <div class="form-group">
-          <label for="title">Message</label>
-          <input type="text" class="form-control" name="message" placeholder="Message...">
-        </div>
+            <legend class="text-center">How has your time at FAMU impacted your trajectory in life?</legend>
 
-        <button type="submit" class="btn btn-default">Submit</button>
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="name">Name</label>
+              <div class="col-md-4">
+              <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
 
-      </form>
-    </div>
-  </div>
-  </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="email">Email</label>
+              <div class="col-md-4">
+              <input id="email" name="email" type="text" placeholder="(Optional)" class="form-control input-md">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="year">Year Graduated</label>
+              <div class="col-md-4">
+              <input id="year" name="year" type="text" placeholder="1887" class="form-control input-md" required="">
+              </div>
+            </div>
+
+            <div class="form-group">
+            <select id="selectCollege" name="selectCollege">
+            <option value="/api/college ">School of Business and Industry </option>
+            <option value="/api/college ">School of Journalism and Graphic Communication </option>
+            <option value="/api/college ">College of Pharmacy and Pharmaceutical Sciences </option>
+            <option value="/api/college ">College of Engineering (FAMU-FSU) </option>
+            <option value="/api/college ">College of Law </option>
+            <option value="/api/college ">School of Allied Health Sciences </option>
+            <option value="/api/college ">College of Education </option>
+            <option value="/api/college ">School of Nursing </option>
+            <option value="/api/college ">School of the Environment </option>
+            <option value="/api/college ">School of Architecture and Engineering Technology </option>
+            <option value="/api/college ">College of Science and Technology </option>
+            <option value="/api/college ">College of Social Sciences, Arts and Humanities </option>
+            <option value="/api/college ">School of Graduate Studies and Research </option>
+            <option value="/api/college ">College of Agriculture and Food Sciences </option>
+            </select>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="major">Major</label>
+              <div class="col-md-4">
+              <input id="major" name="major" type="text" placeholder="" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="job">Occupation</label>
+              <div class="col-md-4">
+              <input id="job" name="job" type="text" placeholder="" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" style="font-size: 15 "- for="message">Message</label>
+              <div class="col-md-4">
+                <textarea class="form-control" id="message" name="message">My time at FAMU...</textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-4">
+                <button id="sharebutton" name="sharebutton" class="submit">Share</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h2>Alumni</h2>
+        </div>
+      </div>
+      <div id='alumni'>
+        <script id='alumni-template' type='text/x-handlebars-template'>
+          <div class="row alumni">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                <!-- begin alumni internal row -->
+                  <div class='row'>
+                    <div class="col-md-3 col-xs-12 thumbnail album-art">
+                      <img src="images/akbeezy.png" alt="alumni image">
+                    </div>
+
+                    <div class="col-md-9 col-xs-12">
+                      <ul class="list-group">
+                        <li class="list-group-item">
+                          <h4 class='inline-header'>Name:</h4>
+                          <span class='alumni-name'>{{name}}</span>
+                        </li>
+
+                        <li class="list-group-item">
+                          <h4 class='inline-header'>Email:</h4>
+                          <span class='alumni-email'>{{email}}</span>
+                        </li>
+
+                        <li class="list-group-item">
+                          <h4 class='inline-header'>Year Graduated:</h4>
+                          <span class='alumni-year'>{{year}}</span>
+                        </li>
+
+                        <li class="list-group-item">
+                          <h4 class='inline-header'>Major:</h4>
+                          <span class='alumni-major'>{{major}}</span>
+                        </li>
+
+                        <li class="list-group-item">
+                          <h4 class='inline-header'>Occupation:</h4>
+                          <span class='alumni-job'>{{job}}</span>
+                        </li>
+
+                        <li class="list-group-item">
+                          <h4 class='inline-header'>Message:</h4>
+                          <span class='alumni-message'>{{message}}</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                  </div>
+                  <!-- end of alumni internal row -->
+                  <div class='panel-footer'>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </script>
+
+      </div>
+    </section>
 </body>
 
 </html>
