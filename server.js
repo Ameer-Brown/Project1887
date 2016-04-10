@@ -1,10 +1,11 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
 //Routes
 app.get('/', function sanity(req, res){
   console.log('server is working');
-  res.sendFile(__dirname + '/views/home.html');
+  res.sendFile(__dirname + '/');
 });
 
 
