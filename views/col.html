@@ -119,60 +119,77 @@
       </div>
     </section>
 
+    <div class="modal fade" tabindex="-1" role="dialog" id="songModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Create Song</h4>
+              </div>
+              <div class="modal-body">
+
+                <fieldset class='form-horizontal'>
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="songName">Song Name</label>
+                    <div class="col-md-4">
+                      <input id="songName" name="songName" type="text" placeholder="" class="form-control input-md" required="">
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="trackNumber">Track Number</label>
+                    <div class="col-md-4">
+                      <input id="trackNumber" name="trackNumber" type="text" placeholder="" class="form-control input-md">
+                    </div>
+                  </div>
+                </fieldset>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveSong">Save changes</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
     <section class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h2>Alumni</h2>
+          <h2>College</h2>
         </div>
       </div>
-      <div id='alumni'>
-        <script id='alumni-template' type='text/x-handlebars-template'>
-          <div class="row alumni">
+      <div id='college'>
+        <script id='college-template' type='text/x-handlebars-template'>
+          <div class="row college">
             <div class="col-md-10 col-md-offset-1">
               <div class="panel panel-default">
                 <div class="panel-body">
                 <!-- begin alumni internal row -->
                   <div class='row'>
-                    <div class="col-md-3 col-xs-12 thumbnail album-art">
-                      <img src="images/akbeezy.png" alt="alumni image">
+                    <div class="col-md-3 col-xs-12 thumbnail college-art">
+                      <img src="images/akbeezy.png" alt="college image">
                     </div>
 
                     <div class="col-md-9 col-xs-12">
                       <ul class="list-group">
                         <li class="list-group-item">
                           <h4 class='inline-header'>Name:</h4>
-                          <span class='alumni-name'>{{name}}</span>
+                          <span class='college-name'>{{name}}</span>
                         </li>
 
                         <li class="list-group-item">
-                          <h4 class='inline-header'>Email:</h4>
-                          <span class='alumni-email'>{{email}}</span>
-                        </li>
-
-                        <li class="list-group-item">
-                          <h4 class='inline-header'>Year Graduated:</h4>
-                          <span class='alumni-year'>{{year}}</span>
-                        </li>
-
-                        <li class="list-group-item">
-                          <h4 class='inline-header'>Major:</h4>
-                          <span class='alumni-major'>{{major}}</span>
-                        </li>
-
-                        <li class="list-group-item">
-                          <h4 class='inline-header'>Occupation:</h4>
-                          <span class='alumni-job'>{{job}}</span>
-                        </li>
-
-                        <li class="list-group-item">
-                          <h4 class='inline-header'>Message:</h4>
-                          <span class='alumni-message'>{{message}}</span>
+                          <h4 class='inline-header'>Alumni:</h4>
+                          <span>&ndash; {{#each alumni}} ({{name}}) {{email}} {{year}} {{major}} {{job}} {{message}} &ndash;  {{/each}}</span>
                         </li>
                       </ul>
                     </div>
 
                   </div>
-                  <!-- end of alumni internal row -->
+                  <!-- end of college internal row -->
                   <div class='panel-footer'>
                   </div>
                 </div>
