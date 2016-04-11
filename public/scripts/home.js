@@ -1,17 +1,11 @@
 $(document).ready(function() {
     console.log('home.js loaded!');
 
-  $('#sbi').on("click", function(e){
-    $.get('/api/college/:collegeID').success(function (college) {
-        renderCollege(college);
-      });
-    });
-
 
 
   $.ajax({
     method:"GET",
-    url: "api/colleges",
+    url: "/api/colleges",
     success: onSuccess
   });
 
@@ -30,11 +24,9 @@ $(document).ready(function() {
      $('#college').append(html);
   }
 
-   function onSuccess(colleges){
-    console.log(colleges);
-    //  college.forEach(function(college){
-       renderCollege(colleges);
-   // });
+   function onSuccess(json){
+    console.log(json);
+       renderCollege(json);
    }
 
 });

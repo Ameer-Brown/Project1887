@@ -1,13 +1,28 @@
 $(document).ready(function() {
   console.log('col.js loaded!');
 
-     $('#college-form form').submit(function(e){
-      e.preventDefault();
-       $.ajax({
-           method: 'POST',
-           url: $('#selectCollege').val(),
-           data: $(this).serialize(),
-           success: newAlumniSuccess,
-         });
-     });
+  $.ajax({
+     method: 'GET',
+     url: "/api"+document.location.pathname,
+     success: onSuccess,
+  });
 });
+
+
+function renderCollege(colleges) {
+  console.log("colleges inside the render: ",colleges);
+  // Target the html of the template
+  var collegeHtml = $('#college-template').html();
+  //compile the aluni html into the handlebars template
+  var collegeTemplate= Handlebars.compile(collegeHtml);
+
+  //prepend our compiled handlebars 'college html' after entering the college handlebars template
+  var html = collegeTemplate({colleges:colleges});
+  console.log(html);
+  $('#college').append(html);
+}
+
+function onSuccess(json){
+  console.log(json);
+  renderCollege(json);
+}
