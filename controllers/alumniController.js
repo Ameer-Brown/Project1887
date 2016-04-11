@@ -10,7 +10,7 @@ function create(req, res) {
     foundCollege.alumni.push(newAlumni);
     foundCollege.save(function(err, savedAlumni) {
       console.log('newAlumni created: ', newAlumni);
-      res.json(newAlumni);  
+      res.json(newAlumni);
     });
   });
 }

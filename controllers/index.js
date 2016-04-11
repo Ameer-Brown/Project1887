@@ -1,3 +1,3 @@
 module.exports.api = require('./apiController');
-module.exports.albums = require('./collegeController');
-module.exports.albumsSongs = require('./alumniController');
+module.exports.colleges = require('./collegesController');
+module.exports.alumni = require('./alumniController');

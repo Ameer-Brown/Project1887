@@ -8,13 +8,17 @@ $('#sbi').on("click", function(e){
   });
       });
 
+
+
+
+
 function renderCollege(college) {
   // Target the html of the template
    var collegeHtml = $('#college-template').html();
    //compile the aluni html into the handlebars template
    var collegeTemplate= Handlebars.compile(collegeHtml);
    //prepend our compiled handlebars 'alumni html' after entering the alumni handlebars template
-   var html=collegeTemplate({college: college });
+   var html=collegeTemplate({colleges: college });
    $('#college').append(html);
      }
 
