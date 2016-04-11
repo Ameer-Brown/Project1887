@@ -1,7 +1,7 @@
 $(document).ready(function() {
   console.log('col.js loaded!');
 
-     $('#alumni-form form').submit(function(e){
+     $('#college-form form').submit(function(e){
       e.preventDefault();
       // var name = $('#name').val();
       // var email = $('#email').val();

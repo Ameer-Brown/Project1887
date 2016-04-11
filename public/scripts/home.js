@@ -1,37 +1,32 @@
 $(document).ready(function() {
   console.log('home.js loaded!');
-$('#business').on("clcik", function(e){
-  $.get('/api/alumni').success(function (alumni) {
-    albums.forEach(function(album) {
-      renderAlumni(alumni);
+
+$('#sbi').on("submit", function(e){
+  $.get('/api/college').onSuccess(function (college) {
+      renderCollege(college);
     });
   });
 
   $.ajax({
              method: 'GET',
-             url: '/api/college/:name/alumni',
-             success: newAlumniSuccess,
+             url: '/api/college/name',
+             success: onSuccess,
            });
       });
 });
 
-function renderAlumni(alumni) {
+function renderCollege(college) {
   // Target the html of the template
-   var alumniHtml = $('#alumni-template').html();
+   var collegeHtml = $('#college-template').html();
    //compile the aluni html into the handlebars template
-   var alumniTemplate= Handlebars.compile(alumniHtml);
+   var collegeTemplate= Handlebars.compile(collegeHtml);
    //prepend our compiled handlebars 'alumni html' after entering the alumni handlebars template
-   var html=alumniTemplate({alumni: alumni });
-   $('#alumni').append(html);
+   var html=collegeTemplate({college: college });
+   $('#college').append(html);
      }
 
- function onSuccess(alumni){
-   alumni.forEach(function(alumni){
-     renderAlumni(alumni);
- });
+ function onSuccess(college){
+  //  college.forEach(function(college){
+     renderCollege(college);
+ // });
  }
-
- function newAlumniSuccess(json) {
-   console.log(json);
-   renderAlumni(json);
-   }
