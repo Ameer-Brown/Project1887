@@ -19,12 +19,12 @@ app.get('/', function sanity(req, res){
   res.sendFile(__dirname + '/views/home.html');
 });
 
-app.get('/api/colleges/570b206ab9c1b0f933fddfa0', controllers.colleges.show);
+app.get('/api/colleges/:collegesId', controllers.colleges.show);
 
-app.post('/api/albums/:collegesId/songs', controllers.alumni.create);
+app.post('/api/colleges/:collegeId/alumni', controllers.alumni.create);
 
 
-
+//Server
 app.listen(process.env.PORT || 3000, function () {
   console.log('Express server is up and running on http://localhost:3000/');
 });

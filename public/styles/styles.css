@@ -1,0 +1,67 @@
+.jumbotron {
+	text-align: center;
+	background: url(/images/leehall.jpg);
+	background-size: cover;
+	color: White;
+}
+h1 {
+	color: White;
+	text-align: center;
+	font-size: 75px;
+	font: Lucida Sans;
+    border-radius: 75px;
+    opacity: 1px;
+}
+h2 {text-align: center;
+	color: black;
+	font-size: 75px;
+	text-decoration: underline;
+	/*text-shadow: -0.06em 0 red, 0.06em 0 cyan;*/
+	padding-bottom: .1px;
+}
+h4 {text-align: center;
+	color: black;
+}
+ul {padding: 5px;
+	color: green;
+}
+img {
+     margin: 40px 0px 0px 0px;
+      border: 7px dotted white;
+      border-radius: 20px;*/
+}
+li {
+	display: inline;
+    padding: 8px;
+    margin-bottom: 7px;
+    background-color :#e3e8e8;
+    background-border: 5px black;
+    border-radius: 20px;
+    color: White;
+    opacity: .75;
+}
+a {
+	margin: 40px 0px 0px 0px
+}
+fieldset {
+	max-width: 300px;
+}
+article {
+	font: lucida;
+	max-width: 800px;
+	padding: 5px;
+	margin: 0 auto;
+}
+input {
+	display: block;
+	padding:
+}
+@media (max-width: 500px) {
+      h1 {
+        font-size: 36px;
+        }
+        li {
+          display: block;
+          padding: 5px;
+      }
+    }
