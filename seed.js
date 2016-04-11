@@ -71,21 +71,21 @@ seedAlumni.push({
                job: 'Web Developer',
                message:'Reach for the stars!'
              });
-             
 
 
-// populate each albums song list
-albumList.forEach(function(album) {
-  album.songs = sampleSongs;
+
+// populate each albums alumni list
+collegeOf.forEach(function(college) {
+  college.alumni = seedAlumni;
 });
 
 
-db.Album.remove({}, function(err, albums){
+db.College.remove({}, function(err, colleges){
 
-  db.Album.create(albumList, function(err, albums){
+  db.College.create(collegeOf, function(err, colleges){
     if (err) { return console.log('ERROR', err); }
-    console.log("all albums:", albums);
-    console.log("created", albums.length, "albums");
+    console.log("all colleges:", colleges);
+    console.log("created", colleges.length, "colleges");
     process.exit();
   });
 
