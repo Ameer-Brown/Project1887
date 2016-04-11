@@ -15,61 +15,63 @@ collegeOf.push({
             });
 
 collegeOf.push({
-              name: 'College of Engineering (FAMU-FSU)' 
+              name: 'College of Engineering (FAMU-FSU)'
             });
 
-              {
-              name: '',
-              },
+collegeOf.push({
+              name: 'College of Law'
+            });
 
-              {
-              name: '  College of Law',
-              },
+collegeOf.push({
+              name: 'School of Allied Health Sciences'
+            });
 
-              {
-              name: 'School of Allied Health Sciences',
-              },
+collegeOf.push({
+              name: 'College of Education'
+            });
 
-              {
-              name: 'College of Education',
-              },
+collegeOf.push({
+              name: 'School of Nursing'
+            });
 
-              {
-              name: 'School of Nursing',
-              },
+collegeOf.push({
+              name: 'School of the Environment'
+            });
 
-              {
-              name: 'School of the Environment',
-              },
+collegeOf.push({
+              name: 'School of Architecture and Engineering Technology'
+            });
 
-              {
-              name: 'School of Architecture and Engineering Technology',
-              },
+collegeOf.push({
+              name: 'College of Science and Technology'
+            });
 
-              {
-              name: 'College of Science and Technology',
-              },
+collegeOf.push({
+              name: 'College of Social Sciences, Arts and Humanities'
+            });
 
-              {
-              name: 'College of Social Sciences, Arts and Humanities',
-              },
+collegeOf.push({
+              name: 'School of Graduate Studies and Research'
+            });
 
-              {
-              name: 'School of Graduate Studies and Research',
-              },
+collegeOf.push({
+              name: 'College of Agriculture and Food Sciences'
+            });
 
-              {
-              name: 'College of Agriculture and Food Sciences',
-              },
-              ];
 
 
 
 var seedAlumni = [];
 
-seedAlumni.push({ alum: '',
-                   : 1
-});
+seedAlumni.push({
+               alum: 'Ameer Brown',
+               email: 'akeithbrown@gmail.com',
+               year: 2014,
+               major: 'Public Relations',
+               job: 'Web Developer',
+               message:'Reach for the stars!'
+             });
+             
 
 
 // populate each albums song list
