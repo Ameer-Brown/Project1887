@@ -19,6 +19,7 @@ app.get('/', function sanity(req, res){
   res.sendFile(__dirname + '/views/home.html');
 });
 
+app.get('/api/colleges', controllers.colleges.get);
 app.get('/api/colleges/:collegesId', controllers.colleges.show);
 
 app.post('/api/colleges/:collegeId/alumni', controllers.alumni.create);

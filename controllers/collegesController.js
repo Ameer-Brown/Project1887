@@ -4,6 +4,13 @@
 
 var db = require('../models');
 
+function get (req, res) {
+  db.College.find( function(err, colleges) {
+    if(err) { console.log('colleges error', err); }
+    console.log('colleges responding with', colleges);
+    res.json(colleges);
+  });
+}
 
 
 // GET /api/colleges/:collegeId
@@ -20,7 +27,8 @@ function show (req, res) {
 // export public methods here
 module.exports = {
   // create: create,
-  show: show,
+     show: show,
+     get: get,
   // destroy: destroy,
   // update: update
 };

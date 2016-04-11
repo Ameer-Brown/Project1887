@@ -61,6 +61,7 @@
       </div>
       <div id='college'>
         <script id='college-template' type='text/x-handlebars-template'>
+          {{#each colleges}}
           <div class="row college">
             <div class="col-md-10 col-md-offset-1">
               <div class="panel panel-default">
@@ -74,13 +75,13 @@
                     <div class="col-md-9 col-xs-12">
                       <ul class="list-group">
                         <li class="list-group-item">
-                          <h4 class='inline-header'>Name:</h4>
-                          <span class='college-name'>{{name}}</span>
+
+                          <span class='college-name'><b>{{name}}</b></span>
                         </li>
 
                         <li class="list-group-item">
                           <h4 class='inline-header'>Alumni:</h4>
-                          <span>&ndash; {{#each alumni}} ({{name}}) {{email}} {{year}} {{major}} {{job}} {{message}} &ndash;  {{/each}}</span>
+                          <span> {{#each alumni}} ({{name}}) {{email}} {{year}} {{major}} {{job}} <br><br> &nbsp <b>Message:</b> {{message}}   {{/each}}</span>
                         </li>
                       </ul>
                     </div>
@@ -93,6 +94,7 @@
               </div>
             </div>
           </div>
+          {{/each}}
         </script>
 
       </div>
