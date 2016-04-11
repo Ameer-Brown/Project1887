@@ -85,7 +85,7 @@ db.College.remove({}, function(err, colleges){
   db.College.create(collegeOf, function(err, colleges){
     if (err) { return console.log('ERROR', err); }
     console.log("all colleges:", colleges);
-    console.log("created", colleges.length, "colleges");
+    console.log( "created", colleges.length, "colleges");
     process.exit();
   });
 
