@@ -34,6 +34,7 @@
   </header>
     </div>
  </div>
+ <legend class="text-center">How has your time at FAMU impacted your trajectory in life?</legend>
  <section id='alumni-form' class="container">
    <h1 </h1>
       <div class="row">
@@ -42,118 +43,14 @@
         <form class="form-horizontal">
           <fieldset>
 
-            <legend class="text-center">How has your time at FAMU impacted your trajectory in life?</legend>
 
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="alum">Name</label>
-              <div class="col-md-4">
-              <input id="alum" name="alum" type="text" placeholder="" class="form-control input-md" required="">
 
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="email">Email</label>
-              <div class="col-md-4">
-              <input id="email" name="email" type="text" placeholder="(Optional)" class="form-control input-md">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="year">Year Graduated</label>
-              <div class="col-md-4">
-              <input id="year" name="year" type="text" placeholder="1887" class="form-control input-md" required="">
-              </div>
-            </div>
-
-            <div class="form-group">
-            <select id="selectCollege" name="selectCollege">
-            <option value="/api/college ">School of Business and Industry </option>
-            <option value="/api/college ">School of Journalism and Graphic Communication </option>
-            <option value="/api/college ">College of Pharmacy and Pharmaceutical Sciences </option>
-            <option value="/api/college ">College of Engineering (FAMU-FSU) </option>
-            <option value="/api/college ">College of Law </option>
-            <option value="/api/college ">School of Allied Health Sciences </option>
-            <option value="/api/college ">College of Education </option>
-            <option value="/api/college ">School of Nursing </option>
-            <option value="/api/college ">School of the Environment </option>
-            <option value="/api/college ">School of Architecture and Engineering Technology </option>
-            <option value="/api/college ">College of Science and Technology </option>
-            <option value="/api/college ">College of Social Sciences, Arts and Humanities </option>
-            <option value="/api/college ">School of Graduate Studies and Research </option>
-            <option value="/api/college ">College of Agriculture and Food Sciences </option>
-            </select>
-            </div>
-
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="major">Major</label>
-              <div class="col-md-4">
-              <input id="major" name="major" type="text" placeholder="" class="form-control input-md" required="">
-
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="job">Occupation</label>
-              <div class="col-md-4">
-              <input id="job" name="job" type="text" placeholder="" class="form-control input-md" required="">
-
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-md-4 control-label" style="font-size: 15 "- for="message">Message</label>
-              <div class="col-md-4">
-                <textarea class="form-control" id="message" name="message">My time at FAMU...</textarea>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="col-md-4">
-                <button id="sharebutton" name="sharebutton" class="submit">Share</button>
-              </div>
-            </div>
           </fieldset>
         </form>
       </div>
       </div>
     </section>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="songModal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Create Song</h4>
-              </div>
-              <div class="modal-body">
-
-                <fieldset class='form-horizontal'>
-                  <!-- Text input-->
-                  <div class="form-group">
-                    <label class="col-md-4 control-label" for="songName">Song Name</label>
-                    <div class="col-md-4">
-                      <input id="songName" name="songName" type="text" placeholder="" class="form-control input-md" required="">
-                    </div>
-                  </div>
-
-                  <!-- Text input-->
-                  <div class="form-group">
-                    <label class="col-md-4 control-label" for="trackNumber">Track Number</label>
-                    <div class="col-md-4">
-                      <input id="trackNumber" name="trackNumber" type="text" placeholder="" class="form-control input-md">
-                    </div>
-                  </div>
-                </fieldset>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="saveSong">Save changes</button>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
 
 
     <section class="container">
@@ -200,6 +97,97 @@
 
       </div>
     </section>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="alumniModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+              </div>
+              <div class="modal-body">
+
+              <fieldset class='form-horizontal'>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="alum">Name</label>
+                    <div class="col-md-4">
+                    <input id="alum" name="alum" type="text" placeholder="" class="form-control input-md" required="">
+
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="email">Email</label>
+                    <div class="col-md-4">
+                    <input id="email" name="email" type="text" placeholder="(Optional)" class="form-control input-md">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="year">Year Graduated</label>
+                    <div class="col-md-4">
+                    <input id="year" name="year" type="text" placeholder="1887" class="form-control input-md" required="">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                  <select id="selectCollege" name="selectCollege">
+                  <option value="/api/college ">School of Business and Industry </option>
+                  <option value="/api/college ">School of Journalism and Graphic Communication </option>
+                  <option value="/api/college ">College of Pharmacy and Pharmaceutical Sciences </option>
+                  <option value="/api/college ">College of Engineering (FAMU-FSU) </option>
+                  <option value="/api/college ">College of Law </option>
+                  <option value="/api/college ">School of Allied Health Sciences </option>
+                  <option value="/api/college ">College of Education </option>
+                  <option value="/api/college ">School of Nursing </option>
+                  <option value="/api/college ">School of the Environment </option>
+                  <option value="/api/college ">School of Architecture and Engineering Technology </option>
+                  <option value="/api/college ">College of Science and Technology </option>
+                  <option value="/api/college ">College of Social Sciences, Arts and Humanities </option>
+                  <option value="/api/college ">School of Graduate Studies and Research </option>
+                  <option value="/api/college ">College of Agriculture and Food Sciences </option>
+                  </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="major">Major</label>
+                    <div class="col-md-4">
+                    <input id="major" name="major" type="text" placeholder="" class="form-control input-md" required="">
+
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="job">Occupation</label>
+                    <div class="col-md-4">
+                    <input id="job" name="job" type="text" placeholder="" class="form-control input-md" required="">
+
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" style="font-size: 15 "- for="message">Message</label>
+                    <div class="col-md-4">
+                      <textarea class="form-control" id="message" name="message">My time at FAMU...</textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-md-4">
+                      <button id="sharebutton" name="sharebutton" class="submit">Share</button>
+                    </div>
+                  </div>
+            </fieldset>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveSong">Save changes</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
 </body>
 
 </html>
