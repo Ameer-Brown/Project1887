@@ -28,16 +28,14 @@ ul {padding: px;
 img {
      margin: 2px 0px 0px 0px;
       border: 2px white;
-      border-radius: 20px;*/
+    
 }
 li {
 	display: inline;
-    padding: 8px;
-    margin-bottom: 7px;
-    background-color :#e3e8e8;
-    background-border: 5px black;
+    padding: 5px;
+    margin-bottom: 4px;
+    background-color :#44A447;
     border-radius: 20px;
-    color: White;
     opacity: .75;
 }
 a {
