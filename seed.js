@@ -1,19 +1,25 @@
 var db = require('./models');
 
-var collegeOf = [
-              {name: 'School of Business and Industry'
-              },
+var collegeOf =[];
+
+collegeOf.push({
+              name: 'School of Business and Industry'
+            });
+
+collegeOf.push({
+              name: 'School of Journalism and Graphic Communication'
+            });
+
+collegeOf.push({
+              name: 'College of Pharmacy and Pharmaceutical Sciences'
+            });
+
+collegeOf.push({
+              name: 'College of Engineering (FAMU-FSU)' 
+            });
 
               {
-              name: 'School of Journalism and Graphic Communication',
-              },
-
-              {
-              name: 'College of Pharmacy and Pharmaceutical Sciences',
-              },
-
-              {
-              name: 'College of Engineering (FAMU-FSU)',
+              name: '',
               },
 
               {
@@ -59,10 +65,10 @@ var collegeOf = [
 
 
 
-var sampleSongs = [];
+var seedAlumni = [];
 
-seedAlumni.push({ name: 'Swamped',
-                   trackNumber: 1
+seedAlumni.push({ alum: '',
+                   : 1
 });
 
 

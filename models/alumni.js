@@ -3,9 +3,13 @@ var Schema = mongoose.Schema;
 // TODO: set up your SongsSchema
 
 var alumniSchema = new Schema({
-  name: String,
-  trackNumber: Number
+  alum: String,
+  email: String,
+  year: Number,
+  major: String,
+  job: String,
+  message: String
 });
 
-var Song= mongoose.model('Song', songSchema);
-module.exports = Song;
+var Alumni= mongoose.model('Alumni', alumniSchema);
+module.exports = Alumni;
