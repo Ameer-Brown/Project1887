@@ -2,7 +2,7 @@
 	text-align: center;
 	background: url(/images/leehall.jpg);
 	background-size: cover;
-	color: White;
+	color:;
 }
 h1 {
 	color: White;
@@ -22,7 +22,7 @@ h2 {text-align: center;
 h4 {text-align: center;
 	color: black;
 }
-ul {padding: 5px;
+ul {padding: px;
 	color: green;
 }
 img {

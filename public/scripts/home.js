@@ -2,7 +2,7 @@ $(document).ready(function() {
   console.log('home.js loaded!');
 
 $('#sbi').on("click", function(e){
-  $.get('/api/college/:collgeID').success(function (college) {
+  $.get('/api/college/:collegeID').success(function (college) {
       renderCollege(college);
     });
   });
