@@ -74,7 +74,7 @@ seedAlumni.push({
 
 
 
-// populate each albums alumni list
+// populate each colleges list
 collegeOf.forEach(function(college) {
   college.alumni = seedAlumni;
 });
