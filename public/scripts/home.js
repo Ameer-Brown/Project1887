@@ -1,19 +1,12 @@
 $(document).ready(function() {
   console.log('home.js loaded!');
 
-$('#sbi').on("submit", function(e){
-  $.get('/api/college').onSuccess(function (college) {
+$('#sbi').on("click", function(e){
+  $.get('/api/college/570b206ab9c1b0f933fddfa0').success(function (college) {
       renderCollege(college);
     });
   });
-
-  $.ajax({
-             method: 'GET',
-             url: '/api/college/name',
-             success: onSuccess,
-           });
       });
-});
 
 function renderCollege(college) {
   // Target the html of the template
