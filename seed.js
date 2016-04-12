@@ -77,14 +77,14 @@ collegeOf.push({
 
 var seedAlumni = [];
 
-seedAlumni.push({
-               alum: 'Ameer Brown',
-               email: 'akeithbrown@gmail.com',
-               year: 2014,
-               major: 'Public Relations',
-               job: 'Web Developer',
-               message:'Reach for the stars!'
-             });
+// seedAlumni.push({
+//                alum: 'Ameer Brown',
+//                email: 'akeithbrown@gmail.com',
+//                year: 2014,
+//                major: 'Public Relations',
+//                job: 'Web Developer',
+//                message:'Reach for the stars!'
+//              });
 
 
 
