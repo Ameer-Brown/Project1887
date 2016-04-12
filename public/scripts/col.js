@@ -47,10 +47,33 @@ function handleUpdateAlumniSave(event) {
   });
 
   $modal.modal('hide');
-  updateMultipleSongs(albumId, updatedSongs);
+  updateMultipleAlumni(albumId, updatedAlumni);
 }
 
+function updateMultipleAlumni(collegeId, alumni) {
+  // We're going to kick off as many PUT requests as we need - 1 per songId
+  //   we'll re-render the entire album again.
+  var url = '/api/colleges/' + albumId + '/alumni/';
+  var deferreds = [];
 
+  alumni.forEach(function(alumni) {
+    var ajaxCall = $.ajax({
+      method: 'PUT',
+      url: url + alumni._id,
+      data: alumni,
+      error: function(err) { console.log('Error updating alumni ', alumni.alum, err); }
+    });
+    deferreds.push(ajaxCall);
+  });
+
+  // wait for all the deferreds then, refetch and re-render the college
+  // the .apply here is allowing us to apply the stuff in the promises array
+  $.when.apply(null, deferreds).always(function() {
+    console.log('all updates sent and received, time to refresh!');
+    console.log(arguments);
+    fetchAndReRenderCollegeWithId(collegeId);
+  });
+}
 
 
 
