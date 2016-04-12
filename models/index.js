@@ -1,5 +1,7 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/Project1887");
+mongoose.connect( process.env.MONGOLAB_URI ||
+                      process.env.MONGOHQ_URL ||
+                            "mongodb://localhost/Project1887" );
 
 var College = require('./college');
 
