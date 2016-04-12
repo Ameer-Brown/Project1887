@@ -1,6 +1,5 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-// TODO: set up your SongsSchema
 
 var alumniSchema = new Schema({
   alum: String,
