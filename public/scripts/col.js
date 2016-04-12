@@ -1,18 +1,19 @@
+var template;
+
 $(document).ready(function() {
   console.log('col.js loaded!');
-
+  var idd = '/api'+document.location.pathname;
   $.ajax({
      method: 'GET',
-     url: "/api"+document.location.pathname,
+     url: idd,
      success: onSuccess,
   });
 
   $('#college').on('click', '.add-alumni', handleAddAlumniClick);
   $('#saveAlumni').on('click', handleNewAlumniSubmit);
-  $('#college').on('click', '.delete-album', handleDeleteAlbumClick);
-  $('#college').on('click', '.edit-alumni', handleAlbumEditClick);
-  $('#college').on('click', '.save-album', handleSaveChangesClick);
   $('#college').on('click', '.edit-alumni', handleEditAlumniClick);
+  var  source = $('#college-template').html();
+  template = Handlebars.compile(source);
 });
 //Get College ID via pathname split pop. Change when Heroku Deploy
 var idd = '/api'+document.location.pathname;
@@ -27,7 +28,7 @@ function handleUpdateAlumniSave(event) {
     $modal.modal('hide');
     return;
   }
-  // snag the albumId from the first form object on the modal
+  // snag the collegeId from the first form object on the modal
   var collegeId = $modal.find('form').data('college-id');
 
   var updatedAlumni = [];
@@ -120,7 +121,7 @@ function handleEditAlumniClick(e) {
 
 function populateEditSongsModal(alumni, collegeId) {
   var templateHtml = $('#alumni-edit-template').html();
-  var template = Handlebars.compile(templateHtml);
+  template = Handlebars.compile(templateHtml);
   alumniForms = template({collegeId: collegeId, alum: alum, email: email, year: year, major: major, job: job, message: message});
   $('#editAlumniModalBody').html(alumniForms);
 }
@@ -128,10 +129,8 @@ function populateEditSongsModal(alumni, collegeId) {
 
 function renderCollege(college) {
   console.log("college inside the render: ",college);
-  var collegeHtml = $('#college-template').html();
-  var collegeTemplate= Handlebars.compile(collegeHtml);
-  console.log(html);
-  $('#college').prepend(html);
+  var collegeHtml= template(college);
+    $('#college').prepend(collegeHtml);
 }
 
 function onSuccess(json){
@@ -174,7 +173,7 @@ function handleNewAlumniSubmit(e) {
 
   console.log( name, email, year, major, job, message, collegeId);
   // POST to SERVER
-  var alumniPostToServerUrl = '/api'+document.location.pathname +'/alumni';
+  var alumniPostToServerUrl = '/api/'+ collegeId+'/alumni';
   $.post(alumniPostToServerUrl, dataToPost, function(data) {
     console.log('received data from post to /alumni:', data);
     // clear form
