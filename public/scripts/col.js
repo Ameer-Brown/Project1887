@@ -121,8 +121,8 @@ function handleEditAlumniClick(e) {
 
 function populateEditAlumniModal(alumni, collegeId) {
   var templateHtml = $('#alumni-edit-template').html();
-  template = Handlebars.compile(templateHtml);
-  alumniForms = template(collegeId, alum, email, year, major, job, message);
+  templateTwo = Handlebars.compile(templateHtml);
+  alumniForms = templateTwo({alum: alum});
   $('#editAlumniModalBody').html(alumniForms);
 }
 
