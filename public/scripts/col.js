@@ -11,7 +11,7 @@ $(document).ready(function() {
   $('#saveAlumni').on('click', handleNewAlumniSubmit);
   $('#college').on('click', '.delete-album', handleDeleteAlbumClick);
   $('#college').on('click', '.edit-alumni', handleAlbumEditClick);
-  $('#albums').on('click', '.save-album', handleSaveChangesClick);
+  $('#college').on('click', '.save-album', handleSaveChangesClick);
   $('#college').on('click', '.edit-alumni', handleEditAlumniClick);
 });
 //Get College ID via pathname split pop. Change when Heroku Deploy
@@ -95,6 +95,35 @@ function handleDeleteAlumniClick(e) {
   });
 }
 
+function handleAlumniDeleteResponse(data) {
+  console.log('handleAlumniDeleteResponse got ', data);
+  var alumniId = data._id;
+  var $formRow = $('form#' + alumniId);
+  var collegeId = $formRow.data('college-id');
+  $formRow.remove();
+  fetchAndReRenderCollegeWithId(collegeId);
+}
+
+
+// when edit songs button clicked
+function handleEditAlumniClick(e) {
+  var $collegeRow = $(this).closest('.college');
+  var collegeId = $collegeRow.data('college-id');
+  console.log('edit alumni clicked for ', collegeId);
+
+  $.get('/api/colleges/' + collegeId + "/alumni", function(alumni) {
+    console.log('got back alumni: ', alumni);
+    populateEditAlumniModal(alumni, collegeId);
+    $('#editAlumniModal').modal();
+  });
+}
+
+function populateEditSongsModal(alumni, collegeId) {
+  var templateHtml = $('#alumni-edit-template').html();
+  var template = Handlebars.compile(templateHtml);
+  alumniForms = template({collegeId: collegeId, alum: alum, email: email, year: year, major: major, job: job, message: message});
+  $('#editAlumniModalBody').html(alumniForms);
+}
 
 
 function renderCollege(college) {
