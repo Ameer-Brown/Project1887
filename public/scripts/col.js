@@ -6,6 +6,16 @@ $(document).ready(function() {
      url: "/api"+document.location.pathname,
      success: onSuccess,
   });
+
+  $('#college').on('click', '.add-alumni', handleAddAlumniClick);
+  $('#saveAlumni').on('click', handleNewAlumniSubmit);
+  $('#college').on('click', '.delete-album', handleDeleteAlbumClick);
+  $('#albums').on('click', '.edit-album', handleAlbumEditClick);
+  $('#albums').on('click', '.save-album', handleSaveChangesClick);
+
+  //Get College ID via pathname split pop. Change when Heroku Deploy
+  var idd = '/api'+document.location.pathname;
+  var  collegeId = idd.split("s/").pop();
 });
 
 
@@ -19,7 +29,7 @@ function renderCollege(college) {
   //prepend our compiled handlebars 'college html' after entering the college handlebars template
   var html = collegeTemplate(college);
   console.log(html);
-  $('#college').append(html);
+  $('#college').prepend(html);
 }
 
 function onSuccess(json){
@@ -27,12 +37,15 @@ function onSuccess(json){
   renderCollege(json);
 }
 
+
+
+
 // when the add alumni button is clicked, display the modal
-function handleAddAlumniClick(e) {
+  function handleAddAlumniClick(e) {
   console.log('add-alumni clicked!');
-  var currentAlumniId = $(this).closest('.alumni').data('alumni-id');
-  console.log('id',currentAlumniId);
-  $('#alumniModal').data('alumni-id', currentAlumniId);
+  var currentCollegeId = $(this).closest('.college').data('college-id');
+  console.log('_id',currentCollegeId);
+  $('#alumniModal').data('college-id', currentCollegeId);
   $('#alumniModal').modal();  // display the modal!
 }
 
@@ -54,13 +67,12 @@ function handleNewAlumniSubmit(e) {
     year: $alumYear.val(),
     major: $alumMajor.val(),
     job: $alumJob.val(),
-    message: $alum.val(),
+    message: $alumMessage.val(),
   };
 
-  var alumniId = $modal.data('alumniId');
-  console.log( name, email, year, major, job, message, alumniId);
+  console.log( name, email, year, major, job, message, collegeId);
   // POST to SERVER
-  var alumniPostToServerUrl = '/api/colleges/'+ collegeId + '/alumni';
+  var alumniPostToServerUrl = '/api'+document.location.pathname +'/alumni';
   $.post(alumniPostToServerUrl, dataToPost, function(data) {
     console.log('received data from post to /alumni:', data);
     // clear form
@@ -69,14 +81,13 @@ function handleNewAlumniSubmit(e) {
     $alumYear.val('');
     $alumMajor.val('');
     $alumJob.val('');
-    $alum.val('');
-
+    $alumMessage.val('');
 
 
     // close modal
     $modal.modal('hide');
     // update the correct college to show the new alumni
-    $.get('/api/colleges/' + collegeId, function(data) {
+    $.get('/api'+document.location.pathname, function(data) {
       // remove the current instance of the college from the page
       $('[data-college-id=' + collegeId + ']').remove();
       // re-render it with the new college data (including alumni)
