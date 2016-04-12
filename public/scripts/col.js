@@ -48,12 +48,12 @@ function handleUpdateAlumniSave(event) {
   });
 
   $modal.modal('hide');
-  updateMultipleAlumni(albumId, updatedAlumni);
+  updateMultipleAlumni(collegeIdId, updatedAlumni);
 }
 
 function updateMultipleAlumni(collegeId, alumni) {
   //   we'll re-render the entire college again.
-  var url = '/api/colleges/' + albumId + '/alumni/';
+  var url = '/api/colleges/' + collegeId + '/alumni/';
   var deferreds = [];
 
   alumni.forEach(function(alumni) {
