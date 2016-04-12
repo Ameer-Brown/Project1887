@@ -12,12 +12,11 @@ $(document).ready(function() {
   $('#college').on('click', '.delete-album', handleDeleteAlbumClick);
   $('#albums').on('click', '.edit-album', handleAlbumEditClick);
   $('#albums').on('click', '.save-album', handleSaveChangesClick);
-
-  //Get College ID via pathname split pop. Change when Heroku Deploy
-  var idd = '/api'+document.location.pathname;
-  var  collegeId = idd.split("s/").pop();
 });
 
+//Get College ID via pathname split pop. Change when Heroku Deploy
+var idd = '/api'+document.location.pathname;
+var  collegeId = idd.split("s/").pop();
 
 function renderCollege(college) {
   console.log("college inside the render: ",college);
@@ -43,9 +42,9 @@ function onSuccess(json){
 // when the add alumni button is clicked, display the modal
   function handleAddAlumniClick(e) {
   console.log('add-alumni clicked!');
-  var currentCollegeId = $(this).closest('.college').data('college-id');
-  console.log('_id',currentCollegeId);
-  $('#alumniModal').data('college-id', currentCollegeId);
+  // var currentCollegeId = $(this).closest('.college').data('college-id');
+  console.log(collegeId);
+  $('#alumniModal').data('college-id', collegeId);
   $('#alumniModal').modal();  // display the modal!
 }
 
