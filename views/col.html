@@ -185,8 +185,34 @@
       </div>
     </div>
   </div>
-</div>
-
+ </div>
 </body>
+
+<script id='alumni-edit-template' type='text/x-handlebars-template'>
+      {{#each alumni}}
+<form class="form-inline" id="{{_id}}" data-college-id="{{../collegeId}}" >
+  <div class="form-group">
+    <input type="text" class="form-control alumni-name" value="{{alum}}">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control alumni-email" value="{{email}}">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control alumni-year" value="{{year}}">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control alumni-major" value="{{major}}">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control alumni-job" value="{{job}}">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control alumni-message" value="{{message}}">
+  </div>
+  <div class="form-group">
+    <button class="btn btn-danger" data-alumni-id="{{_id}}">x</button>
+  </div>
+</form>
+
 
 </html>
