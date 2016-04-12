@@ -63,5 +63,6 @@ function update(req, res) {
 module.exports = {
   create: create,
   index: index,
-  update: update
+  update: update,
+  destroy: destroy
 };

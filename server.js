@@ -31,6 +31,8 @@ app.get('/api/colleges', controllers.colleges.index);
 app.get('/api/colleges/:collegeId', controllers.colleges.show);
 app.get('/api/colleges/:collegeId/alumni', controllers.alumni.index);
 app.post('/api/colleges/:collegeId/alumni', controllers.alumni.create);
+app.put('/api/colleges/:collegeId/alumni/:alumniId', controllers.alumni.update);
+app.delete('/api/colleges/:collegeId/alumni/:alumniId', controllers.alumni.destroy);
 
 
 //Server
