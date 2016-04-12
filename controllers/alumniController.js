@@ -22,13 +22,28 @@ function create(req, res) {
   });
 }
 
+// app.delete('/api/colleges/:collegeId/alumni/:alumniId', controllers.alumni.destroy);
+function destroy(req, res) {
+  db.College.findById(req.params.collegeId, function(err, foundCollege) {
+    console.log(foundAlbum);
+    var correctAlumni = foundCollege.alumni.id(req.params.alumniId);
+    if (correctSong) {
+      correctAlumni.remove();
+      foundCollege.save(function(err, saved) {
+        console.log('REMOVED ', correctAlumni.name, 'FROM ', saved.alumni);
+        res.json(correctAlumni);
+      });
+    } else {
+      res.send(404);
+    }
+  });
 
+}
 
 //app.put('/api/colleges/:collegeId/alumni/:alumniId', controllers.alumni.update);
 function update(req, res) {
   db.College.findById(req.params.collegeId, function(err, foundCollege) {
     console.log(foundCollege);
-    // we've got the album, now find the song within it
     var correctAlumni = foundCollege.alumni.id(req.params.alumniId);
     if (correctAlumni) {
       console.log(req.body);
