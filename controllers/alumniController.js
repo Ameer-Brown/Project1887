@@ -1,6 +1,13 @@
 // alumniController
 var db = require('../models');
 
+// app.get('/api/colleges/:collegeId/alumni', controllers.alumni.index);
+function index(req, res) {
+  db.Alumni.findById(req.params.collegeId, function(err, foundAlumni) {
+    console.log('responding with alumni:', foundAlumni); 
+    res.json(foundAlumni.alumni);
+  });
+}
 
 // POST '/api/colleges/:collegeId/alumni'
 function create(req, res) {
@@ -17,5 +24,6 @@ function create(req, res) {
 
 
 module.exports = {
-  create: create
+  create: create,
+  index: index
 };

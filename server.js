@@ -24,11 +24,12 @@ app.get('/colleges/:collegeId', function(req, res){
 });
 
 
+
 // JSON API ENDPOINTS
 
 app.get('/api/colleges', controllers.colleges.index);
 app.get('/api/colleges/:collegeId', controllers.colleges.show);
-
+app.get('/api/colleges/:collegeId/alumni', controllers.alumni.index);
 app.post('/api/colleges/:collegeId/alumni', controllers.alumni.create);
 
 

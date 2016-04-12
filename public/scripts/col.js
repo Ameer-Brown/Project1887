@@ -10,8 +10,9 @@ $(document).ready(function() {
   $('#college').on('click', '.add-alumni', handleAddAlumniClick);
   $('#saveAlumni').on('click', handleNewAlumniSubmit);
   $('#college').on('click', '.delete-album', handleDeleteAlbumClick);
-  $('#albums').on('click', '.edit-album', handleAlbumEditClick);
+  $('#college').on('click', '.edit-alumni', handleAlbumEditClick);
   $('#albums').on('click', '.save-album', handleSaveChangesClick);
+  $('#college').on('click', '.edit-alumni', handleEditAlumniClick);
 });
 
 //Get College ID via pathname split pop. Change when Heroku Deploy
@@ -94,5 +95,17 @@ function handleNewAlumniSubmit(e) {
     });
   }).error(function(err) {
     console.log('post to /api/colleges/:collegeId/alumni resulted in error', err);
+  });
+}
+
+// when edit songs button clicked
+function handleEditAlumniClick(e) {
+  console.log('edit songs clicked for ', collegeId);
+  var alumniGetFromServerUrl = '/api'+document.location.pathname +'/alumni';
+  $.get(alumniGetFromServerUrl, function(alumni) {
+    console.log('got back alumni: ', alumni);
+    populateEditAlumniModal(alumni, collegeId);
+    // fire zee modal!
+    $('#editAlumniModal').modal();
   });
 }

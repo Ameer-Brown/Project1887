@@ -5,8 +5,9 @@ function index(req, res) {
     base_url: "",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes available endpoints"},
-      {method: "GET", path: "/api/colleges", description: "Shows all collges"},
-      {method: "GET", path: "/api/colleges/:collegeId", description: "Shows college by ID"}
+      {method: "GET", path: "/api/colleges", description: "Shows all colleges"},
+      {method: "GET", path: "/api/colleges/:collegeId", description: "Shows college by ID"},
+      {method: "GET", path: "/api/colleges/:collegeId/alumni", description: "Shows college by ID plus its alum"}
     ]
   });
 }

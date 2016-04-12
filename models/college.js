@@ -4,7 +4,7 @@ var Alumni = require('./alumni.js');
 
 var collegeSchema = new Schema({
   name: String,
-  // image: Image,
+  // image: URL,
   alumni: [Alumni.schema],
 });
 
