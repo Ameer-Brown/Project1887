@@ -27,16 +27,16 @@ function onSuccess(json){
   renderCollege(json);
 }
 
-// when the add song button is clicked, display the modal
+// when the add alumni button is clicked, display the modal
 function handleAddAlumniClick(e) {
   console.log('add-alumni clicked!');
-  var currentAlumniId = $(this).closest('.alumni').data('alumni-id'); // "5665ff1678209c64e51b4e7b"
+  var currentAlumniId = $(this).closest('.alumni').data('alumni-id');
   console.log('id',currentAlumniId);
   $('#alumniModal').data('alumni-id', currentAlumniId);
   $('#alumniModal').modal();  // display the modal!
 }
 
-// when the song modal submit button is clicked:
+// when the alumni modal submit button is clicked:
 function handleNewAlumniSubmit(e) {
   e.preventDefault();
   var $modal = $('#alumniModal');
@@ -48,21 +48,30 @@ function handleNewAlumniSubmit(e) {
   var $alumMessage = $modal.find('#message');
 
   // get data from modal fields
-  // note the server expects the keys to be 'name', 'trackNumber' so we use those.
   var dataToPost = {
-    name: $alumName.val(),
+    alum: $alumName.val(),
     email: $alumEmail.val(),
     year: $alumYear.val(),
+    major: $alumMajor.val(),
+    job: $alumJob.val(),
+    message: $alum.val(),
   };
+
   var alumniId = $modal.data('alumniId');
   console.log( name, email, year, major, job, message, alumniId);
   // POST to SERVER
-  var songPostToServerUrl = '/api/albums/'+ albumId + '/songs';
-  $.post(songPostToServerUrl, dataToPost, function(data) {
-    console.log('received data from post to /songs:', data);
+  var alumniPostToServerUrl = '/api/colleges/'+ collegeId + '/alumni';
+  $.post(alumniPostToServerUrl, dataToPost, function(data) {
+    console.log('received data from post to /alumni:', data);
     // clear form
     $alumName.val('');
     $alumEmail.val('');
+    $alumYear.val('');
+    $alumMajor.val('');
+    $alumJob.val('');
+    $alum.val('');
+
+
 
     // close modal
     $modal.modal('hide');
