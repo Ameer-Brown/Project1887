@@ -14,10 +14,46 @@ $(document).ready(function() {
   $('#albums').on('click', '.save-album', handleSaveChangesClick);
   $('#college').on('click', '.edit-alumni', handleEditAlumniClick);
 });
-
 //Get College ID via pathname split pop. Change when Heroku Deploy
 var idd = '/api'+document.location.pathname;
 var  collegeId = idd.split("s/").pop();
+
+
+function handleUpdateAlumniSave(event) {
+  // build all the alumni objects up
+  var $modal = $('#editAlumniModal');
+  if($modal.find('form').length < 1) {
+    // if there are no form elements, then there are no songs to update
+    $modal.modal('hide');
+    return;
+  }
+  // snag the albumId from the first form object on the modal
+  var collegeId = $modal.find('form').data('college-id');
+
+  var updatedAlumni = [];
+
+  $modal.find('form').each(function () {
+    // in here this is a form element
+    var aAlumni = {};
+    aAlumni._id = $(this).attr('id');
+    aAlumni.alum = $(this).find('input.alumni-name').val();
+    aAlumni.email = $(this).find('input.alumni-email').val();
+    aAlumni.year = $(this).find('input.alumni-year').val();
+    aAlumni.major = $(this).find('input.alumni-major').val();
+    aAlumni.job = $(this).find('input.alumni-job').val();
+    aAlumni.message = $(this).find('input.alumni-message').val();
+    console.log('found updated data for alumni: ', aAlumni);
+    updatedAlumni.push(aAlumni);
+  });
+
+  $modal.modal('hide');
+  updateMultipleSongs(albumId, updatedSongs);
+}
+
+
+
+
+
 
 function renderCollege(college) {
   console.log("college inside the render: ",college);
