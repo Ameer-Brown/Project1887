@@ -75,14 +75,14 @@ function handleNewAlumniSubmit(e) {
 
     // close modal
     $modal.modal('hide');
-    // update the correct album to show the new song
-    $.get('/api/albums/' + albumId, function(data) {
-      // remove the current instance of the album from the page
-      $('[data-album-id=' + albumId + ']').remove();
-      // re-render it with the new album data (including songs)
-      renderAlbum(data);
+    // update the correct college to show the new alumni
+    $.get('/api/colleges/' + collegeId, function(data) {
+      // remove the current instance of the college from the page
+      $('[data-college-id=' + collegeId + ']').remove();
+      // re-render it with the new college data (including alumni)
+      renderCollege(data);
     });
   }).error(function(err) {
-    console.log('post to /api/albums/:albumId/songs resulted in error', err);
+    console.log('post to /api/colleges/:collegeId/alumni resulted in error', err);
   });
 }
