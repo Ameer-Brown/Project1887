@@ -51,8 +51,7 @@ function handleUpdateAlumniSave(event) {
 }
 
 function updateMultipleAlumni(collegeId, alumni) {
-  // We're going to kick off as many PUT requests as we need - 1 per songId
-  //   we'll re-render the entire album again.
+  //   we'll re-render the entire college again.
   var url = '/api/colleges/' + albumId + '/alumni/';
   var deferreds = [];
 
@@ -66,8 +65,6 @@ function updateMultipleAlumni(collegeId, alumni) {
     deferreds.push(ajaxCall);
   });
 
-  // wait for all the deferreds then, refetch and re-render the college
-  // the .apply here is allowing us to apply the stuff in the promises array
   $.when.apply(null, deferreds).always(function() {
     console.log('all updates sent and received, time to refresh!');
     console.log(arguments);
@@ -75,6 +72,28 @@ function updateMultipleAlumni(collegeId, alumni) {
   });
 }
 
+function fetchAndReRenderCollegeWithId(collegeId) {
+  $.get('/api/colleges/' + collegeId, function(data) {
+    $('div[data-college-id=' + collegeId + ']').remove();
+    renderCollege(data);
+  });
+}
+
+// when a delete button in the edit alumni modal is clicked
+function handleDeleteAlumniClick(e) {
+  e.preventDefault();
+  var $thisButton = $(this);
+  var alumniId = $thisButton.data('alumni-id');
+  var collegeId = $thisButton.closest('form').data('college-id');
+
+  var url = '/api/colleges/' + collegeId + '/alumni/' + alumniId;
+  console.log('send DELETE ', url);
+  $.ajax({
+    method: 'DELETE',
+    url: url,
+    success: handleAlumniDeleteResponse
+  });
+}
 
 
 
