@@ -3,9 +3,9 @@ var db = require('../models');
 
 // app.get('/api/colleges/:collegeId/alumni', controllers.alumni.index);
 function index(req, res) {
-  db.Alumni.findById(req.params.collegeId, function(err, foundAlumni) {
-    console.log('responding with alumni:', foundAlumni);
-    res.json(foundAlumni.alumni);
+  db.College.findById(req.params.collegeId, function(err, foundCollege) {
+    console.log('responding with alumni:', foundCollege.alumni);
+    res.json(foundCollege.alumni);
   });
 }
 
@@ -25,7 +25,7 @@ function create(req, res) {
 // app.delete('/api/colleges/:collegeId/alumni/:alumniId', controllers.alumni.destroy);
 function destroy(req, res) {
   db.College.findById(req.params.collegeId, function(err, foundCollege) {
-    console.log(foundAlbum);
+    console.log(foundCollege);
     var correctAlumni = foundCollege.alumni.id(req.params.alumniId);
     if (correctSong) {
       correctAlumni.remove();
