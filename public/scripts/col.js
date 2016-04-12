@@ -119,10 +119,10 @@ function handleEditAlumniClick(e) {
   });
 }
 
-function populateEditSongsModal(alumni, collegeId) {
+function populateEditAlumniModal(alumni, collegeId) {
   var templateHtml = $('#alumni-edit-template').html();
   template = Handlebars.compile(templateHtml);
-  alumniForms = template({collegeId: collegeId, alum: alum, email: email, year: year, major: major, job: job, message: message});
+  alumniForms = template(collegeId, alum, email, year, major, job, message);
   $('#editAlumniModalBody').html(alumniForms);
 }
 
@@ -173,7 +173,7 @@ function handleNewAlumniSubmit(e) {
 
   console.log( name, email, year, major, job, message, collegeId);
   // POST to SERVER
-  var alumniPostToServerUrl = '/api/'+ collegeId+'/alumni';
+  var alumniPostToServerUrl = '/api/colleges/'+ collegeId+'/alumni';
   $.post(alumniPostToServerUrl, dataToPost, function(data) {
     console.log('received data from post to /alumni:', data);
     // clear form
