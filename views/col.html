@@ -61,14 +61,26 @@
       </div>
       <div id='college'>
         <script id='college-template' type='text/x-handlebars-template'>
-          <div class="row college">
+          <div class="row college" data-college-id="{{_id}}">
             <div class="col-md-10 col-md-offset-1">
               <div class="panel panel-default">
+                <div class='panel-footer'>
+                    <div class='panel-footer'>
+                      <center>
+                      <button class='btn btn-primary add-alumni' >Add Your Story</button>&nbsp
+                      <!-- <button class='btn btn-danger delete-college'>Delete Alumni</button>&nbsp -->
+                      <button class='btn btn-info edit-alumni'>Edit Alumni</button>
+                      <button class='btn btn-success save-college hidden'>Save Changes</button>
+                      </center>
+                    </div>
+                  </div>
                 <div class="panel-body">
                 <!-- begin alumni internal row -->
                   <div class='row'>
-                    <div class="col-md-3 col-xs-12 thumbnail college-art">
+                    <div class="col-md-3 col-xs-12  college-art">
+                      <center>
                       <img src='/images/rattler.png' alt="college image" style="width: 100px; height:100px">
+                      </center>
                     </div>
 
                     <div class="col-md-9 col-xs-12">
@@ -88,16 +100,6 @@
 
                   </div>
                   <!-- end of college internal row -->
-                  <div class='panel-footer'>
-                      <div class='panel-footer'>
-                        <center>
-                        <button class='btn btn-primary add-alumni' >Add Your Story</button>&nbsp
-                        <!-- <button class='btn btn-danger delete-college'>Delete Alumni</button>&nbsp -->
-                        <button class='btn btn-info edit-alumni'>Edit Alumni</button>
-                        <button class='btn btn-success save-college hidden'>Save Changes</button>
-                        </center>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -120,7 +122,7 @@
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="alum">Name</label>
                     <div class="col-md-4">
-                    <input id="alum" name="alum" type="text" placeholder="" class="form-control input-md" required="">
+                    <input id="alum" name="alum" type="text" style="width: 150px" placeholder="" class="form-control input-md" required="">
 
                     </div>
                   </div>
@@ -128,21 +130,21 @@
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="email">Email</label>
                     <div class="col-md-4">
-                    <input id="email" name="email" type="text" placeholder="(Optional)" class="form-control input-md">
+                    <input id="email" name="email" type="text" style="width: 150px" placeholder="(Optional)" class="form-control input-md">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="year">Year Graduated</label>
                     <div class="col-md-4">
-                    <input id="year" name="year" type="text" placeholder="1887" class="form-control input-md" required="">
+                    <input id="year" name="year" type="text" style="width: 150px" placeholder="1887" class="form-control input-md" required="">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="major">Major</label>
                     <div class="col-md-4">
-                    <input id="major" name="major" type="text" placeholder="" class="form-control input-md" required="">
+                    <input id="major" name="major" type="text" style="width: 150px" placeholder="" class="form-control input-md" required="">
 
                     </div>
                   </div>
@@ -150,7 +152,7 @@
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="job">Occupation</label>
                     <div class="col-md-4">
-                    <input id="job" name="job" type="text" placeholder="" class="form-control input-md" required="">
+                    <input id="job" name="job" type="text" style="width: 150px" placeholder="" class="form-control input-md" required="">
 
                     </div>
                   </div>
@@ -158,7 +160,7 @@
                   <div class="form-group">
                     <label class="col-md-4 control-label" style="font-size: 15 "- for="message">Message</label>
                     <div class="col-md-4">
-                      <textarea class="form-control" id="message" name="message"></textarea>
+                      <textarea class="form-control" style="width: 450px" id="message" name="message"></textarea>
                     </div>
                   </div>
             </fieldset>
@@ -177,13 +179,44 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="editAlumniModalTitle">Alumni List</h4>
+        <h4 class="modal-title" id="editAlumniModalTitle">Update Only Your Information Please. Still In Beta.</h4>
       </div>
       <div class="modal-body" id='editAlumniModalBody'>
-        <p> REPLACE #editAlumniModalBody </p>
+        <!-- <p> <script id='alumni-edit-template' type='text/x-handlebars-template'>
+              {{#each alumni}}
+        <form class="form-inline" id="{{_id}}" data-college-id="{{../collegeId}}" >
+          <center>
+          <div class="form-group">
+            <input type="text" class="form-control alumni-name" value={{alum}}>
+          </div><br>
+          <div class="form-group">
+            <input type="text" class="form-control alumni-email" value={{email}}>
+          </div><br>
+          <div class="form-group">
+            <input type="text" class="form-control alumni-year" value={{year}}>
+          </div><br>
+          <div class="form-group">
+            <input type="text" class="form-control alumni-major" value={{major}}>
+          </div><br>
+          <div class="form-group">
+            <input type="text" class="form-control alumni-job" value={{job}}>
+          </div><br>
+          <div class="form-group">
+            <input type="text" class="form-control alumni-message" value={{message}}>
+          </div><br>
+          <div class="form-group">
+            <button class="btn btn-danger" data-alumni-id={{_id}}>x</button>
+            <button type="button" class="btn btn-primary" id='editAlumniModalSubmit'>Save changes</button>
+          </div><br><br>
+          </center>
+        </form>
+            {{/each}}
+        </script></p> -->
+           <p> REPLACE #editAlumniModalBody </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id='editAlumniModalSubmit'>Save changes</button>
       </div>
     </div>
   </div>

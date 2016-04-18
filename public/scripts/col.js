@@ -12,6 +12,9 @@ $(document).ready(function() {
   $('#college').on('click', '.add-alumni', handleAddAlumniClick);
   $('#saveAlumni').on('click', handleNewAlumniSubmit);
   $('#college').on('click', '.edit-alumni', handleEditAlumniClick);
+  // edit alumni modal triggers
+  $('#editAlumniModalBody').on('click', 'button.btn-danger', handleDeleteAlumniClick);
+  $('#editAlumniModal').on('click', 'button#editAlumniModalSubmit', handleUpdateAlumniSave);
   var  source = $('#college-template').html();
   template = Handlebars.compile(source);
 });
@@ -30,25 +33,25 @@ function handleUpdateAlumniSave(event) {
   }
   // snag the collegeId from the first form object on the modal
   var collegeId = $modal.find('form').data('college-id');
+  console.log(collegeId);
 
   var updatedAlumni = [];
 
   $modal.find('form').each(function () {
     // in here this is a form element
-    var aAlumni = {};
-    aAlumni._id = $(this).attr('id');
-    aAlumni.alum = $(this).find('input.alumni-name').val();
-    aAlumni.email = $(this).find('input.alumni-email').val();
-    aAlumni.year = $(this).find('input.alumni-year').val();
-    aAlumni.major = $(this).find('input.alumni-major').val();
-    aAlumni.job = $(this).find('input.alumni-job').val();
-    aAlumni.message = $(this).find('input.alumni-message').val();
-    console.log('found updated data for alumni: ', aAlumni);
-    updatedAlumni.push(aAlumni);
+    var uAlumni = {};
+    uAlumni._id = $(this).attr('id');
+    uAlumni.alum = $(this).find('input.alumni-name').val();
+    uAlumni.email = $(this).find('input.alumni-email').val();
+    uAlumni.year = $(this).find('input.alumni-year').val();
+    uAlumni.major = $(this).find('input.alumni-major').val();
+    uAlumni.job = $(this).find('input.alumni-job').val();
+    uAlumni.message = $(this).find('input.alumni-message').val();
+    console.log('found updated data for alumni: ', uAlumni);
+    updatedAlumni.push(uAlumni);
   });
-
+  updateMultipleAlumni(collegeId, updatedAlumni);
   $modal.modal('hide');
-  updateMultipleAlumni(collegeIdId, updatedAlumni);
 }
 
 function updateMultipleAlumni(collegeId, alumni) {
@@ -67,8 +70,7 @@ function updateMultipleAlumni(collegeId, alumni) {
   });
 
   $.when.apply(null, deferreds).always(function() {
-    console.log('all updates sent and received, time to refresh!');
-    console.log(arguments);
+    console.log('Going to fetch render', collegeId);
     fetchAndReRenderCollegeWithId(collegeId);
   });
 }
@@ -85,8 +87,9 @@ function handleDeleteAlumniClick(e) {
   e.preventDefault();
   var $thisButton = $(this);
   var alumniId = $thisButton.data('alumni-id');
+  console.log(alumniId);
   var collegeId = $thisButton.closest('form').data('college-id');
-
+  console.log(collegeId);
   var url = '/api/colleges/' + collegeId + '/alumni/' + alumniId;
   console.log('send DELETE ', url);
   $.ajax({
@@ -97,7 +100,7 @@ function handleDeleteAlumniClick(e) {
 }
 
 function handleAlumniDeleteResponse(data) {
-  console.log('handleAlumniDeleteResponse got ', data);
+  console.log('handleAlumniDeleteResponse got', data);
   var alumniId = data._id;
   var $formRow = $('form#' + alumniId);
   var collegeId = $formRow.data('college-id');
@@ -106,23 +109,22 @@ function handleAlumniDeleteResponse(data) {
 }
 
 
-// when edit songs button clicked
-function handleEditAlumniClick(e) {
-  var $collegeRow = $(this).closest('.college');
-  var collegeId = $collegeRow.data('college-id');
-  console.log('edit alumni clicked for ', collegeId);
 
-  $.get('/api/colleges/' + collegeId + "/alumni", function(alumni) {
-    console.log('got back alumni: ', alumni);
+function handleEditAlumniClick(e) {
+  console.log('edit clicked for ', collegeId);
+  var alumniGetFromServerUrl = '/api'+document.location.pathname +'/alumni';
+  $.get(alumniGetFromServerUrl, function(alumni) {
+    console.log('got my alumni: ', alumni);
     populateEditAlumniModal(alumni, collegeId);
     $('#editAlumniModal').modal();
   });
 }
 
 function populateEditAlumniModal(alumni, collegeId) {
+  console.log("modal populated with", collegeId);
   var templateHtml = $('#alumni-edit-template').html();
   templateTwo = Handlebars.compile(templateHtml);
-  alumniForms = templateTwo({alum: alum});
+  alumniForms = templateTwo({alumni: alumni, collegeId: collegeId});
   $('#editAlumniModalBody').html(alumniForms);
 }
 
@@ -134,23 +136,19 @@ function renderCollege(college) {
 }
 
 function onSuccess(json){
-  console.log(json);
+  console.log("SUCCESS", json);
   renderCollege(json);
 }
 
 
-
-
-// when the add alumni button is clicked, display the modal
   function handleAddAlumniClick(e) {
   console.log('add-alumni clicked!');
-  // var currentCollegeId = $(this).closest('.college').data('college-id');
   console.log(collegeId);
   $('#alumniModal').data('college-id', collegeId);
-  $('#alumniModal').modal();  // display the modal!
+  $('#alumniModal').modal();
 }
 
-// when the alumni modal submit button is clicked:
+
 function handleNewAlumniSubmit(e) {
   e.preventDefault();
   var $modal = $('#alumniModal');
@@ -160,8 +158,6 @@ function handleNewAlumniSubmit(e) {
   var $alumMajor = $modal.find('#major');
   var $alumJob = $modal.find('#job');
   var $alumMessage = $modal.find('#message');
-
-  // get data from modal fields
   var dataToPost = {
     alum: $alumName.val(),
     email: $alumEmail.val(),
@@ -171,42 +167,24 @@ function handleNewAlumniSubmit(e) {
     message: $alumMessage.val(),
   };
 
-  console.log( name, email, year, major, job, message, collegeId);
-  // POST to SERVER
+   // Post
   var alumniPostToServerUrl = '/api/colleges/'+ collegeId+'/alumni';
   $.post(alumniPostToServerUrl, dataToPost, function(data) {
     console.log('received data from post to /alumni:', data);
-    // clear form
     $alumName.val('');
     $alumEmail.val('');
     $alumYear.val('');
     $alumMajor.val('');
     $alumJob.val('');
     $alumMessage.val('');
-
-
-    // close modal
     $modal.modal('hide');
-    // update the correct college to show the new alumni
+
+    // update with Post
     $.get('/api'+document.location.pathname, function(data) {
-      // remove the current instance of the college from the page
       $('[data-college-id=' + collegeId + ']').remove();
-      // re-render it with the new college data (including alumni)
       renderCollege(data);
     });
   }).error(function(err) {
     console.log('post to /api/colleges/:collegeId/alumni resulted in error', err);
-  });
-}
-
-// when edit songs button clicked
-function handleEditAlumniClick(e) {
-  console.log('edit songs clicked for ', collegeId);
-  var alumniGetFromServerUrl = '/api'+document.location.pathname +'/alumni';
-  $.get(alumniGetFromServerUrl, function(alumni) {
-    console.log('got back alumni: ', alumni);
-    populateEditAlumniModal(alumni, collegeId);
-    // fire zee modal!
-    $('#editAlumniModal').modal();
   });
 }
