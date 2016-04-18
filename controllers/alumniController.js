@@ -40,7 +40,7 @@ function update(req, res) {
       correctAlumni.year = req.body.year;
       correctAlumni.major = req.body.major;
       correctAlumni.job = req.body.job;
-      correctAlumni.job = req.body.job;
+      correctAlumni.message = req.body.message;
       foundCollege.save(function(err, saved) {
         res.json(correctAlumni);
       });

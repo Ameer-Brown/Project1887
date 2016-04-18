@@ -3,6 +3,8 @@ var template;
 $(document).ready(function() {
   console.log('col.js loaded!');
   var idd = '/api'+document.location.pathname;
+
+  //READ
   $.ajax({
      method: 'GET',
      url: idd,

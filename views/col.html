@@ -51,7 +51,7 @@
     </div>
  </div>
  <center>
- <img src="/images/trajectory.png" alt="trajectory"  >
+ <img src="/images/trajectory.png" alt="trajectory">
  </center>
 
     <section class="container">
@@ -68,14 +68,12 @@
                     <div class='panel-footer'>
                       <center>
                       <button class='btn btn-primary add-alumni' >Add Your Story</button>&nbsp
-                      <!-- <button class='btn btn-danger delete-college'>Delete Alumni</button>&nbsp -->
                       <button class='btn btn-info edit-alumni'>Edit Alumni</button>
                       <button class='btn btn-success save-college hidden'>Save Changes</button>
                       </center>
                     </div>
                   </div>
                 <div class="panel-body">
-                <!-- begin alumni internal row -->
                   <div class='row'>
                     <div class="col-md-3 col-xs-12  college-art">
                       <center>
@@ -99,7 +97,6 @@
                     </div>
 
                   </div>
-                  <!-- end of college internal row -->
                   </div>
                 </div>
               </div>
@@ -196,29 +193,31 @@
 
 <script id='alumni-edit-template' type='text/x-handlebars-template'>
       {{#each alumni}}
-<form class="form-inline" id="{{_id}}" data-college-id="{{../collegeId}}" >
+<center>
+<form class="form-inline" id="{{_id}}" data-college-id="{{../collegeId}}" style="width: 250px">
   <div class="form-group">
-    <input type="text" class="form-control alumni-name" value="{{alum}}">
-  </div>
+    <input type="text" class="form-control alumni-name" value="{{alum}}" style="width: 250px">
+  </div><br>
   <div class="form-group">
-    <input type="text" class="form-control alumni-email" value="{{email}}">
-  </div>
+    <input type="text" class="form-control alumni-email" value="{{email}}" style="width: 250px">
+  </div><br>
   <div class="form-group">
-    <input type="text" class="form-control alumni-year" value="{{year}}">
-  </div>
+    <input type="text" class="form-control alumni-year" value="{{year}}" style="width: 250px">
+  </div><br>
   <div class="form-group">
-    <input type="text" class="form-control alumni-major" value="{{major}}">
-  </div>
+    <input type="text" class="form-control alumni-major" value="{{major}}" style="width: 250px">
+  </div><br>
   <div class="form-group">
-    <input type="text" class="form-control alumni-job" value="{{job}}">
-  </div>
+    <input type="text" class="form-control alumni-job" value="{{job}}" style="width: 250px">
+  </div><br>
   <div class="form-group">
-    <input type="text" class="form-control alumni-message" value="{{message}}">
-  </div>
+    <input type="text" class="form-control alumni-message" value="{{message}}" style="width: 350px"></input>
+  </div><br>
   <div class="form-group">
     <button class="btn btn-danger" data-alumni-id="{{_id}}">x</button>
-  </div>
+  </div><br><hr>
 </form>
+</center>
     {{/each}}
 </script>
 
