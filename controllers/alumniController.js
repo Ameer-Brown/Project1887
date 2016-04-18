@@ -36,6 +36,11 @@ function update(req, res) {
     if (correctAlumni) {
       correctAlumni.id = req.body.id;
       correctAlumni.alum = req.body.alum;
+      correctAlumni.email = req.body.email;
+      correctAlumni.year = req.body.year;
+      correctAlumni.major = req.body.major;
+      correctAlumni.job = req.body.job;
+      correctAlumni.job = req.body.job;
       foundCollege.save(function(err, saved) {
         res.json(correctAlumni);
       });
